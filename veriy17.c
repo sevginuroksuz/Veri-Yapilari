@@ -57,8 +57,54 @@ void sonaEkle(int sayi){
     }
 }
 
+void bastanSil(){
+    if(start==NULL){
+        printf("Listede silinecek eleman yok!\n");
+    }
+    else{
+        if(start->next==NULL){
+            free(start);
+            start=NULL;
+        }
+        else
+        {
+            temp=start->next;
+            free(start);
+            temp->prev=NULL;
+            start=temp;
+        }
+        
+
+    }
+}
+
+void sondanSil(){
+    if(start==NULL){
+        printf("Listede silinecek eleman yok!\n");
+    }
+    else{
+        if(start->next==NULL){
+            free(start);
+            start=NULL;
+        }
+        else
+        {
+            temp=start;
+            while(temp->next->next!=NULL){
+                temp=temp->next;
+            }
+            temp2=temp;
+            free(temp->next);
+            temp2->next=NULL;
+            
+        }
+        
+
+    }
+}
+
+
 void listele(){
-    system("cls");
     if(start==NULL)
        printf("liste bos");
     else{
@@ -89,6 +135,14 @@ int main(){
         break;
         case 2:  printf("Sona eklenecek sayi:\n"); scanf("%d",&sayi);
         sonaEkle(sayi);
+        break;
+
+        case 3:  
+        bastanSil();
+        break;
+        
+        case 4:  
+        bastanSil();
         break;
 
         case 7: listele();
